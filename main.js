@@ -39,7 +39,7 @@ const questions = [
         rightAnswer: 3
     },
     {
-        question: 'В чём разница между == и ===??',
+        question: 'В чём разница между == и ===?',
         options: [
             '== для строкового сравнения, а === для сравнения объектов и массивов',
             'Оператор двойного равенства производит приведение типов, оператор строгого равенства - нет.',
@@ -219,10 +219,21 @@ const validate = () => {
     }
 }
 
+const resultScore = document.querySelector('.result-score');
+
 const quizOver = () => {
     document.querySelector('.quiz-over-modal').classList.add('active');
     correctAnswer.innerHTML = score;
     numberOfAllQuestions2.innerHTML = questions.length;
+    if(score === questions.length || score === questions.length - 1) {
+        resultScore.innerHTML = 'Отличный результат!';
+    } else if(score === questions.length - 2 || score === questions.length - 3) {
+        resultScore.innerHTML = 'Хороший результат!';
+    } else if(score === questions.length - 3 || score === questions.length - 4) {
+        resultScore.innerHTML = 'Не сдавайся! Есть, что подтянуть!';
+    } else {
+        resultScore.innerHTML = 'Учи мат. часть или не лезь в JS, салага!';
+    }
 }
 
 const tryAgain = () => {
